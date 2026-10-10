@@ -3,4 +3,4 @@ Allow: /
 Disallow: /404.html
 Disallow: /admin/
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://abylakhan.github.io/lumen-dental-studio/sitemap.xml

@@ -41,7 +41,7 @@ const SITE = {
     },
     // Canonical public URL (no trailing slash). Also update sitemap.xml,
     // robots.txt and the <link rel="canonical"> tags when deploying.
-    url: 'https://example.com',
+    url: 'https://abylakhan.github.io/lumen-dental-studio',
     // Set to true only once ALL contact data below is verified. Structured
     // data (Schema.org) includes address/phone/hours only when true.
     dataVerified: false,
