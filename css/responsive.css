@@ -250,3 +250,8 @@ html.is-typing .action-bar, html.menu-open .action-bar { animation: none; }
 /* Let swipeable chip rows shrink inside flex/grid parents (prevents page overflow) */
 [data-svc-filters], [data-faq-filters], [data-results-filters], [data-pricing], .faq-side > *, .toolbar > * { min-width: 0; }
 .faq-layout > *, .results__side, .pricing__table { min-width: 0; }
+
+/* The close-up photo starts slightly enlarged for its zoom-in; keep it from widening the page */
+@media (max-width: 899.98px) {
+  .closeup { overflow-x: clip; }
+}
