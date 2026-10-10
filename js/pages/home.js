@@ -6,7 +6,7 @@
 import SITE from '../../config.js';
 import { t, tl } from '../localization.js';
 import { $, $$, esc } from '../utils.js';
-import { motionOK, splitWords, revealLines } from '../animations.js';
+import { motionOK, lightMotion, splitWords, revealLines } from '../animations.js';
 import { serviceCardHTML, doctorCardHTML, priceRowHTML, chipsHTML } from '../render.js';
 import { publishableCases, comparisonHTML, initComparison } from '../before-after.js';
 
@@ -401,6 +401,7 @@ function showcaseHorizontal() {
 }
 
 function teamMotion() {
+  if (lightMotion()) return;
   // Alternate columns drift at different speeds for an editorial rhythm.
   $$('.team__item').forEach((item, i) => {
     gsap.fromTo(item, { y: i % 2 ? 80 : 20 }, {
@@ -424,6 +425,68 @@ function finaleMotion() {
   finale.addEventListener('pointermove', move, { passive: true });
 }
 
+/* ---- Mobile-only motion (transform/opacity only — smooth on phones) ---- */
+
+/** Approach cards stack while scrolling: each settles on top of the previous. */
+function approachStackMobile() {
+  const items = $$('.approach__item');
+  items.forEach((item, i) => {
+    if (i === items.length - 1) return;
+    gsap.to(item, {
+      scale: 0.9, autoAlpha: 0.35, transformOrigin: '50% 0%', ease: 'none',
+      scrollTrigger: { trigger: items[i + 1], start: 'top 85%', end: 'top 25%', scrub: true },
+    });
+  });
+}
+
+/** Hero photo eases in as you scroll, the title lifts away. */
+function heroMobile() {
+  gsap.fromTo('.hero__media', { scale: 1 }, {
+    scale: 0.94, ease: 'none',
+    scrollTrigger: { trigger: '.hero__media', start: 'top 20%', end: 'bottom top', scrub: true },
+  });
+}
+
+/** Swipe carousel: centred card is full size, neighbours recede; counter + progress follow. */
+function showcaseSwipe() {
+  const viewport = $('.showcase__viewport');
+  const items = $$('.showcase__item', viewport);
+  const bar = $('.showcase__progress span');
+  const count = $('[data-showcase-count]');
+  const total = items.length;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const mid = viewport.scrollLeft + viewport.clientWidth / 2;
+    let active = 0;
+    let best = Infinity;
+    items.forEach((item, i) => {
+      const centre = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.min(1, Math.abs(centre - mid) / viewport.clientWidth);
+      if (Math.abs(centre - mid) < best) { best = Math.abs(centre - mid); active = i; }
+      item.style.transform = `scale(${1 - dist * 0.1})`;
+      item.style.opacity = String(1 - dist * 0.45);
+    });
+    const max = viewport.scrollWidth - viewport.clientWidth;
+    if (bar) bar.style.transform = `scaleX(${max > 0 ? viewport.scrollLeft / max : 0})`;
+    if (count) count.textContent = `${String(active + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  viewport.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+  // Entrance: cards slide in from the right the first time the gallery appears.
+  gsap.fromTo(items.slice(0, 3), { x: 80, autoAlpha: 0 }, {
+    x: 0, autoAlpha: 1, duration: 1, stagger: 0.1, ease: 'expo.out',
+    scrollTrigger: { trigger: viewport, start: 'top 85%' }, onComplete: update,
+  });
+  return () => {
+    viewport.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+    items.forEach((item) => { item.style.transform = ''; item.style.opacity = ''; });
+  };
+}
+
 function buildMotion() {
   if (!motionOK()) return;
   heroIntro();
@@ -434,7 +497,8 @@ function buildMotion() {
 
   const mm = gsap.matchMedia();
   mm.add('(min-width: 900px)', () => closeupDesktop());
-  mm.add('(max-width: 899.98px)', () => closeupMobile());
+  mm.add('(max-width: 899.98px)', () => { closeupMobile(); approachStackMobile(); heroMobile(); });
+  mm.add('(max-width: 1023.98px), (max-height: 599.98px)', () => showcaseSwipe());
   mm.add('(min-width: 1024px) and (min-height: 600px)', () => showcaseHorizontal());
 
   document.addEventListener('i18n:change', scrubTitle);

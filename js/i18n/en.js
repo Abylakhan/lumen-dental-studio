@@ -91,6 +91,7 @@ export default {
       title: 'Every detail, <em class="serif">seen</em> up close.',
       left: 'Precision is a habit, not a feature.',
       right: 'Explore the four principles behind every visit.',
+      hintTouch: 'Tap a point',
       hint: 'Hover, tap or focus the points',
       imageAlt: 'Close-up of a smile on a dark background',
       points: [

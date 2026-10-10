@@ -10,7 +10,7 @@
     var theme = localStorage.getItem('lumen.theme');
     if (theme === 'light' || theme === 'dark' || theme === 'auto') d.setAttribute('data-theme', theme);
     var lang = localStorage.getItem('lumen.lang');
-    if (lang === 'ru' || lang === 'kk' || lang === 'en') d.lang = lang;
+    if (lang === 'ru' || lang === 'kk') d.lang = lang;
     if (sessionStorage.getItem('lumen.pt')) {
       sessionStorage.removeItem('lumen.pt');
       if (!reduce) d.classList.add('pt-enter');

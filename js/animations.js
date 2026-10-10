@@ -16,6 +16,8 @@ import { isAutoTheme } from './scenes.js';
 import { registerLenis } from './navigation.js';
 
 export const motionOK = () => hasGsap() && !reducedMotion();
+/** Phones and touch tablets get the same look with cheaper effects. */
+export const lightMotion = () => window.matchMedia('(max-width: 899.98px), (hover: none)').matches;
 
 const PALETTES = {
   light: { '--bg': '#ffffff', '--fg': '#080808', '--muted': '#5c5c5a', '--line': 'rgba(8,8,8,0.12)' },
@@ -139,7 +141,7 @@ export function initReveals(root = document) {
   $$('[data-parallax]', root).forEach((el) => {
     if (el.dataset.parallaxInit) return;
     el.dataset.parallaxInit = '1';
-    const amount = parseFloat(el.dataset.parallax) || 0.15;
+    const amount = (parseFloat(el.dataset.parallax) || 0.15) * (lightMotion() ? 0.5 : 1);
     gsap.fromTo(el, { yPercent: -amount * 50 }, {
       yPercent: amount * 50,
       ease: 'none',
@@ -178,7 +180,8 @@ export function initMorphs() {
     delete el.dataset.sceneNow;
   }));
   morphTweens = [];
-  if (!motionOK() || !isAutoTheme()) return;
+  // Per-frame colour scrubbing repaints whole sections — too heavy for phones.
+  if (!motionOK() || !isAutoTheme() || lightMotion()) return;
   $$('[data-morph-from]').forEach((section) => {
     const from = PALETTES[section.dataset.morphFrom];
     const to = PALETTES[section.dataset.scene];

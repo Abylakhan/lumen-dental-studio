@@ -5,7 +5,7 @@ import { mediaUrl, errorCode } from '../../js/api/index.js';
 export { esc };
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-export const LANGS = [['ru', 'RU'], ['kk', 'KZ'], ['en', 'EN']];
+export const LANGS = [['ru', 'RU'], ['kk', 'KZ']];
 export const DAYS = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 export const DAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 export const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0];

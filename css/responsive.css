@@ -4,13 +4,13 @@
 
 /* ---- Header ----------------------------------------------------------- */
 @media (max-width: 1199.98px) {
-  .header__nav, .header__lang { display: none; }
+  .header__nav { display: none; }
 }
 @media (max-width: 599.98px) {
   :root { --header-h: 64px; }
   .hide-sm { display: none !important; }
   .header__inner { gap: var(--sp-2); }
-  .header__cta { padding: 0 0.95rem; }
+  .header__cta { display: none; } /* "Записаться" lives in the bottom action bar on phones */
   .header__theme { display: none; }
   .logo { font-size: 1.05rem; }
 }
@@ -120,9 +120,12 @@
   .ba { aspect-ratio: 4 / 5; border-radius: var(--radius); }
   .team__grid { gap: var(--sp-6) var(--sp-4); }
   .doc-card__role { font-size: var(--fs-lg); }
-  .price-row { grid-template-columns: 1fr; }
-  .price-row__price { grid-row: auto; grid-column: 1; }
-  .price-row__actions { grid-column: 1; grid-row: auto; justify-self: start; }
+  .price-row { grid-template-columns: minmax(0, 1fr) auto; padding-block: var(--sp-4); gap: var(--sp-1) var(--sp-3); }
+  .price-row__title { font-size: var(--fs-base); }
+  .price-row__price { font-size: var(--fs-base); text-align: right; }
+  .price-row__note { grid-column: 1 / -1; }
+  .price-row__actions { grid-column: 1 / -1; grid-row: auto; justify-self: start; }
+  .price-row__actions .link-arrow { padding-block: 0.25rem; min-height: 40px; }
   .finale__ctas .btn { width: 100%; }
 }
 
@@ -164,3 +167,86 @@
 @media (min-width: 1800px) {
   :root { --container: 1680px; }
 }
+
+/* ---- Touch targets (≥ 44px on touch screens) -------------------------- */
+@media (hover: none), (max-width: 767.98px) {
+  .lang-switch button { min-height: 40px; min-width: 44px; }
+  .pill-list a, .pill-list span { min-height: 44px; }
+  .contact-big dd a { display: inline-flex; align-items: center; min-height: 44px; }
+  .contact-big a.big { min-height: 48px; }
+  .svc-row h2 a { display: inline-block; padding-block: 0.4rem; }
+}
+
+/* Hint wording per input type */
+.hint-touch { display: none; }
+@media (hover: none) { .hint-pointer { display: none; } .hint-touch { display: inline-block; } }
+
+/* ---- Performance on phones -------------------------------------------- */
+@media (max-width: 767.98px) {
+  /* Blur behind a fixed header is expensive on mobile GPUs: use a solid bar. */
+  .site-header.is-scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; background-color: var(--bg); }
+  .finale__light { animation: none; }
+}
+
+/* ---- Mobile polish ------------------------------------------------------ */
+@media (max-width: 1023.98px), (max-height: 599.98px) {
+  .showcase__item { transition: transform 200ms linear, opacity 200ms linear; will-change: transform; }
+  .showcase__viewport { scroll-padding-inline: var(--gutter); padding-bottom: var(--sp-2); }
+  .showcase__item { scroll-snap-align: center; }
+  .showcase__track { padding-inline: calc((100vw - min(78vw, 340px)) / 2); }
+}
+@media (max-width: 899.98px) {
+  .approach__item { position: sticky; top: calc(var(--header-h) + var(--sp-3)); background: var(--bg); padding-bottom: var(--sp-5); }
+  .approach__list { gap: var(--sp-6); }
+  .approach { overflow: clip; } /* hidden would break position: sticky */
+}
+/* Press feedback on touch */
+@media (hover: none) {
+  .btn, .service-card, .doc-card, .case-btn, .chip, .action-bar__btn, .svc-row, .icon-btn, .lang-switch button {
+    transition: transform 160ms var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active, .service-card:active, .doc-card:active, .chip:active, .action-bar__btn:active, .icon-btn:active { transform: scale(0.96); }
+  .case-btn:active, .svc-row:active { transform: scale(0.985); }
+}
+/* Bottom bar slides in on load */
+@media (max-width: 767.98px) {
+  .action-bar { animation: bar-in 700ms var(--ease-out) 600ms both; }
+}
+@keyframes bar-in { from { transform: translateY(110%); } }
+html.is-typing .action-bar, html.menu-open .action-bar { animation: none; }
+
+/* Filter chips: one swipeable row on phones instead of several wrapped rows */
+@media (max-width: 767.98px) {
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-block: 2px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--gutter), #000 calc(100% - 2.5rem), transparent);
+            mask-image: linear-gradient(90deg, transparent 0, #000 var(--gutter), #000 calc(100% - 2.5rem), transparent);
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; scroll-snap-align: start; }
+  .faq-side .chips, .toolbar .chips { margin-inline: calc(var(--gutter) * -1); }
+}
+
+/* Booking on phones: heading → form → "what happens next" (form first) */
+@media (max-width: 1023.98px) {
+  .booking { display: flex; flex-direction: column; gap: var(--sp-6); padding-top: calc(var(--header-h) + var(--sp-6)); }
+  .booking__intro { display: contents; }
+  .booking__intro > * { order: 0; }
+  .booking-card { order: 1; }
+  .booking__intro > div { order: 2; }
+  .booking__intro h1 { margin-top: calc(var(--sp-4) * -1); }
+}
+@media (max-width: 599.98px) {
+  .booking-card { margin-inline: calc(var(--gutter) * -0.5); padding: var(--sp-5) var(--sp-4); }
+}
+
+/* Let swipeable chip rows shrink inside flex/grid parents (prevents page overflow) */
+[data-svc-filters], [data-faq-filters], [data-results-filters], [data-pricing], .faq-side > *, .toolbar > * { min-width: 0; }
+.faq-layout > *, .results__side, .pricing__table { min-width: 0; }

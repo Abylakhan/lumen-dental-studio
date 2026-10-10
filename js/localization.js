@@ -24,7 +24,6 @@ function detectInitial() {
   if (stored && supported.includes(stored)) return stored;
   const nav = (navigator.language || '').slice(0, 2).toLowerCase();
   if (nav === 'kk') return 'kk';
-  if (nav === 'en') return 'en';
   return SITE.languages.default;
 }
 

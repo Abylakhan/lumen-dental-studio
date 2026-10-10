@@ -114,7 +114,6 @@ const SITE = {
     supported: [
       { code: 'ru', label: 'RU', name: 'Русский', htmlLang: 'ru' },
       { code: 'kk', label: 'KZ', name: 'Қазақша', htmlLang: 'kk' },
-      { code: 'en', label: 'EN', name: 'English', htmlLang: 'en' },
     ],
   },
 
