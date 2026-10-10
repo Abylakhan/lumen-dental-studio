@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Вопросы и ответы — Lumen Dental Studio</title>
+  <meta name="description" content="Ответы на частые вопросы о записи, лечении, оплате и подготовке к визиту.">
+  <link rel="canonical" href="https://example.com/faq.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lumen Dental Studio">
+  <meta property="og:title" content="Вопросы и ответы — Lumen Dental Studio">
+  <meta property="og:description" content="Ответы на частые вопросы о записи, лечении, оплате и подготовке к визиту.">
+  <meta property="og:url" content="https://example.com/faq.html">
+  <meta property="og:image" content="https://example.com/assets/images/og-image.jpg">
+  <meta property="og:locale" content="ru_KZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="faq">
+  <main id="main" tabindex="-1">
+    <section class="page-hero scene" data-scene="light">
+      <div class="container">
+        <nav class="breadcrumb" data-i18n-attr="aria-label:nav.breadcrumb"><ol><li><a href="index.html" data-i18n="nav.home"></a></li><li aria-current="page" data-i18n="nav.faq"></li></ol></nav>
+        <div class="page-hero__grid">
+          <div>
+            <h1 data-reveal="lines" data-i18n-html="faqPage.title"></h1>
+          </div>
+          <div class="stack">
+            <p class="lead" data-reveal="up" data-i18n="faqPage.lead"></p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section scene" data-scene="light" style="padding-top:0">
+      <div class="container faq-layout">
+        <aside class="faq-side">
+          <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label class="sr-only" for="faq-search" data-i18n="faqPage.searchLabel"></label>
+            <input class="input" id="faq-search" type="search" autocomplete="off" data-i18n-attr="placeholder:faqPage.searchPlaceholder" data-faq-search>
+          </div>
+          <div data-faq-filters></div>
+          <div class="cta-band__actions" data-faq-contacts></div>
+        </aside>
+        <div>
+          <div class="accordion" data-faq-list></div>
+          <div class="empty" data-faq-empty hidden>
+            <h3 data-i18n="ui.noResults"></h3>
+            <button type="button" class="btn" data-faq-reset><span class="btn__label" data-text=""><span data-i18n="ui.resetFilters"></span></span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section scene" data-scene="dark" id="preparation">
+      <div class="container">
+        <h2 style="margin-bottom:var(--sp-8);max-width:16ch" data-reveal="lines" data-i18n="faqPage.prepTitle"></h2>
+        <ol class="prep-grid" role="list" data-reveal="stagger" data-prep></ol>
+      </div>
+    </section>
+    <section class="section section--tight scene" data-scene="light">
+      <div class="container">
+        <div class="cta-band" data-reveal="up">
+          <h2 data-i18n-html="home.final.title"></h2>
+          <div class="cta-band__actions">
+            <a class="btn btn--solid" href="booking.html" ><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn" href="contacts.html" ><span class="btn__label" data-text=""><span data-i18n="cta.contact"></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p style="padding:1rem;text-align:center">Для полной работы сайта включите JavaScript.</p></noscript>
+</body>
+</html>

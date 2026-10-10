@@ -1,0 +1,237 @@
+/* ==========================================================================
+   BASE — tokens, scene palettes, reset, typography
+   ========================================================================== */
+
+/* Registered colour properties so scene changes can interpolate smoothly. */
+@property --bg { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+@property --fg { syntax: '<color>'; inherits: true; initial-value: #080808; }
+@property --muted { syntax: '<color>'; inherits: true; initial-value: #5c5c5a; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: rgba(8, 8, 8, 0.12); }
+@property --surface { syntax: '<color>'; inherits: true; initial-value: #f2f2f0; }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #3f6f8f; }
+
+:root {
+  /* Brand palette */
+  --c-white: #ffffff;
+  --c-black: #080808;
+  --c-off: #f2f2f0;
+  --c-graphite: #171717;
+  --c-ice: #a9d2ea;
+  --c-ice-deep: #3f6f8f; /* accessible icy blue on light backgrounds */
+
+  /* Typography */
+  --font-sans: 'Inter Tight', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --fs-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --fs-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --fs-2xl: clamp(1.75rem, 1.35rem + 1.8vw, 3rem);
+  --fs-3xl: clamp(2.25rem, 1.5rem + 3.4vw, 4.75rem);
+  --fs-display: clamp(2.75rem, 1.2rem + 6.6vw, 8.75rem);
+  --fs-mega: clamp(4.5rem, 2rem + 13vw, 17rem);
+
+  /* Spacing — 4/8 rhythm */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+  --section-y: clamp(5rem, 3rem + 9vw, 11rem);
+  --gutter: clamp(1rem, 0.5rem + 2.4vw, 3rem);
+  --container: 1440px;
+
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-lg: 28px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 700ms;
+  --dur-scene: 900ms;
+
+  --header-h: 72px;
+  --actionbar-h: 0px;
+
+  /* Default (light) scene */
+  --bg: var(--c-white);
+  --fg: var(--c-black);
+  --muted: #5c5c5a;
+  --line: rgba(8, 8, 8, 0.12);
+  --surface: var(--c-off);
+  --accent: var(--c-ice-deep);
+  --on-fg: var(--c-white); /* text on a --fg filled button */
+
+  color-scheme: light;
+}
+
+/* ---- Scene palettes --------------------------------------------------- */
+[data-scene='light'] {
+  --bg: var(--c-white); --fg: var(--c-black); --muted: #5c5c5a;
+  --line: rgba(8, 8, 8, 0.12); --surface: var(--c-off); --accent: var(--c-ice-deep);
+  --on-fg: var(--c-white);
+  color-scheme: light;
+}
+[data-scene='soft'] {
+  --bg: var(--c-off); --fg: var(--c-black); --muted: #57574f;
+  --line: rgba(8, 8, 8, 0.13); --surface: var(--c-white); --accent: var(--c-ice-deep);
+  --on-fg: var(--c-white);
+  color-scheme: light;
+}
+[data-scene='dark'] {
+  --bg: var(--c-black); --fg: var(--c-off); --muted: #a4a4a0;
+  --line: rgba(242, 242, 240, 0.14); --surface: var(--c-graphite); --accent: var(--c-ice);
+  --on-fg: var(--c-black);
+  color-scheme: dark;
+}
+
+/* Manual theme preference overrides every scene (higher specificity). */
+:root[data-theme='light'],
+:root[data-theme='light'] [data-scene] {
+  --bg: var(--c-white); --fg: var(--c-black); --muted: #5c5c5a;
+  --line: rgba(8, 8, 8, 0.12); --surface: var(--c-off); --accent: var(--c-ice-deep);
+  --on-fg: var(--c-white);
+  color-scheme: light;
+}
+:root[data-theme='light'] [data-scene='soft'] { --bg: var(--c-off); --surface: var(--c-white); }
+:root[data-theme='dark'],
+:root[data-theme='dark'] [data-scene] {
+  --bg: var(--c-black); --fg: var(--c-off); --muted: #a4a4a0;
+  --line: rgba(242, 242, 240, 0.14); --surface: var(--c-graphite); --accent: var(--c-ice);
+  --on-fg: var(--c-black);
+  color-scheme: dark;
+}
+:root[data-theme='dark'] [data-scene='soft'] { --bg: #0f0f0f; --surface: var(--c-graphite); }
+
+/* Elements that paint a scene */
+.scene,
+[data-scene] {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition:
+    --bg var(--dur-scene) var(--ease-in-out),
+    --fg var(--dur-scene) var(--ease-in-out),
+    --muted var(--dur-scene) var(--ease-in-out),
+    --line var(--dur-scene) var(--ease-in-out),
+    --surface var(--dur-scene) var(--ease-in-out),
+    --accent var(--dur-scene) var(--ease-in-out);
+}
+
+/* ---- Reset ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  font-feature-settings: 'ss01', 'cv11';
+}
+img, picture, video, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
+table { border-collapse: collapse; }
+[hidden] { display: none !important; }
+
+/* ---- Typography ------------------------------------------------------- */
+h1, h2, h3, h4 { font-weight: 500; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
+h1 { font-size: var(--fs-display); }
+h2 { font-size: var(--fs-3xl); }
+h3 { font-size: var(--fs-xl); letter-spacing: -0.02em; line-height: 1.15; }
+h4 { font-size: var(--fs-lg); letter-spacing: -0.01em; line-height: 1.25; }
+p { text-wrap: pretty; }
+
+.serif, em.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.display { font-size: var(--fs-display); line-height: 0.95; letter-spacing: -0.045em; font-weight: 500; }
+.mega { font-size: var(--fs-mega); line-height: 0.85; letter-spacing: -0.06em; font-weight: 500; }
+.lead { font-size: var(--fs-lg); line-height: 1.5; color: var(--muted); max-width: 38ch; }
+.muted { color: var(--muted); }
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.kicker::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.index-num {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+/* ---- Accessibility ---------------------------------------------------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: fixed;
+  top: var(--sp-3); left: var(--sp-3);
+  z-index: 1000;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--c-black);
+  color: var(--c-white);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--dur) var(--ease-out);
+}
+.skip-link:focus { transform: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+::selection { background: var(--c-ice); color: var(--c-black); }
+
+/* Content stays readable before JS loads; JS only hides what it animates. */
+html.js:not(.i18n) #main { visibility: hidden; }
+html.js [data-hero-hide] { visibility: hidden; }
+html.js.ready [data-hero-hide],
+html.no-motion [data-hero-hide] { visibility: visible; }

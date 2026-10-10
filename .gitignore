@@ -1,0 +1,17 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local tooling (security tests use a throwaway Postgres in a venv)
+.venv/
+__pycache__/
+*.pyc
+
+# Never commit secrets. The Supabase anon key in js/backend-config.js is
+# public by design; service_role keys and database passwords must never be here.
+.env
+.env.*
+*.pem
+supabase/.temp/

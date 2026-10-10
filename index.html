@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lumen Dental Studio — продуманная стоматология в Алматы</title>
+  <meta name="description" content="Современная стоматология: диагностика, лечение, имплантация, ортодонтия и эстетика. Оставьте заявку онлайн или через WhatsApp.">
+  <link rel="canonical" href="https://example.com/">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lumen Dental Studio">
+  <meta property="og:title" content="Lumen Dental Studio — продуманная стоматология в Алматы">
+  <meta property="og:description" content="Современная стоматология: диагностика, лечение, имплантация, ортодонтия и эстетика.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/assets/images/og-image.jpg">
+  <meta property="og:locale" content="ru_KZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap">
+  <link rel="preload" as="image" href="assets/images/photos/hero-smile.webp" imagesrcset="assets/images/photos/hero-smile-sm.webp 900w, assets/images/photos/hero-smile.webp 2000w" imagesizes="(min-width: 900px) 46vw, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="home">
+  <main id="main" tabindex="-1">
+
+    <!-- SCENE 1 — Cinematic hero (light) -->
+    <section class="hero scene" data-scene="light" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <p class="kicker hero__kicker" data-hero-hide data-i18n="home.hero.kicker"></p>
+        <h1 class="hero__title" id="hero-title" data-hero-hide data-i18n-html="home.hero.title"></h1>
+        <div class="hero__media" data-hero-hide>
+          <div class="hero__media-inner">
+            <img src="assets/images/photos/hero-smile.webp"
+                 srcset="assets/images/photos/hero-smile-sm.webp 900w, assets/images/photos/hero-smile.webp 2000w"
+                 sizes="(min-width: 900px) 46vw, 100vw" width="2000" height="1333"
+                 fetchpriority="high" decoding="async" alt="" data-i18n-attr="alt:home.hero.imageAlt">
+          </div>
+        </div>
+        <div class="hero__bottom">
+          <p class="lead hero__lead" data-hero-hide data-i18n="home.hero.lead"></p>
+          <div class="hero__ctas" data-hero-hide>
+            <a class="btn btn--solid btn--lg" href="booking.html"><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--lg" href="#results"><span class="btn__label" data-text=""><span data-i18n="cta.explore"></span></span></a>
+          </div>
+          <p class="hero__note muted" data-hero-hide data-i18n="home.hero.note"></p>
+        </div>
+        <a class="scroll-cue hero__cue" href="#approach" data-hero-hide><span class="scroll-cue__line" aria-hidden="true"></span><span data-i18n="ui.scroll"></span></a>
+      </div>
+    </section>
+
+    <!-- SCENE 2 — Into darkness: approach -->
+    <section class="approach scene" id="approach" data-scene="dark"
+             data-morph-from="light" data-morph-with=".hero" data-morph-start="top 92%" data-morph-end="top 28%"
+             aria-labelledby="approach-title">
+      <div class="container">
+        <p class="kicker" data-reveal="fade" data-i18n="home.s2.kicker"></p>
+        <h2 class="approach__title" id="approach-title" data-scrub-words data-i18n="home.s2.title"></h2>
+        <svg class="approach__curve" viewBox="0 0 1200 120" fill="none" aria-hidden="true" data-reveal="draw">
+          <path d="M0 60 C 200 60, 260 110, 600 110 S 1000 60, 1200 60" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <ol class="approach__list" role="list">
+          <li class="approach__item">
+            <hr class="rule" data-reveal="line">
+            <span class="index-num">01</span>
+            <figure class="media approach__img" data-reveal="clip"><img src="assets/images/photos/xray.webp" width="1600" height="1067" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:home.s2.imgAlt.0"></figure>
+            <h3 data-reveal="lines" data-i18n="home.s2.items.0.title"></h3>
+            <p class="muted" data-reveal="up" data-i18n="home.s2.items.0.text"></p>
+          </li>
+          <li class="approach__item">
+            <hr class="rule" data-reveal="line" data-reveal-delay="0.1">
+            <span class="index-num">02</span>
+            <figure class="media approach__img" data-reveal="clip" data-reveal-delay="0.1"><img src="assets/images/photos/instruments.webp" width="1600" height="1067" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:home.s2.imgAlt.1"></figure>
+            <h3 data-reveal="lines" data-reveal-delay="0.1" data-i18n="home.s2.items.1.title"></h3>
+            <p class="muted" data-reveal="up" data-reveal-delay="0.1" data-i18n="home.s2.items.1.text"></p>
+          </li>
+          <li class="approach__item">
+            <hr class="rule" data-reveal="line" data-reveal-delay="0.2">
+            <span class="index-num">03</span>
+            <figure class="media approach__img" data-reveal="clip" data-reveal-delay="0.2"><img src="assets/images/photos/dentist-bw.webp" width="1000" height="1497" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:home.s2.imgAlt.2"></figure>
+            <h3 data-reveal="lines" data-reveal-delay="0.2" data-i18n="home.s2.items.2.title"></h3>
+            <p class="muted" data-reveal="up" data-reveal-delay="0.2" data-i18n="home.s2.items.2.text"></p>
+          </li>
+        </ol>
+        <dl class="stats" data-reveal="stagger" data-stats></dl>
+      </div>
+    </section>
+
+    <!-- SCENE 3 — Interactive close-up (dark, pinned on desktop) -->
+    <section class="closeup scene" id="closeup" data-scene="dark" aria-labelledby="closeup-title">
+      <div class="closeup__pin">
+        <div class="closeup__head container">
+          <p class="kicker" data-i18n="home.s3.kicker"></p>
+          <h2 class="closeup__title" id="closeup-title" data-i18n-html="home.s3.title"></h2>
+        </div>
+        <div class="closeup__stage">
+          <div class="closeup__frame" data-closeup-frame>
+            <img src="assets/images/photos/smile-closeup2.webp"
+                 srcset="assets/images/photos/smile-closeup2-sm.webp 900w, assets/images/photos/smile-closeup2.webp 1400w"
+                 sizes="100vw" width="1400" height="933" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:home.s3.imageAlt">
+            <div class="closeup__lines" aria-hidden="true" data-closeup-lines></div>
+            <div data-hotspots></div>
+          </div>
+        </div>
+        <p class="closeup__side closeup__side--left" data-i18n="home.s3.left"></p>
+        <p class="closeup__side closeup__side--right"><span data-i18n="home.s3.right"></span><br><small class="muted" data-i18n="home.s3.hint"></small></p>
+      </div>
+    </section>
+
+    <!-- SCENE 4 — Services showcase (light, horizontal on desktop) -->
+    <section class="showcase scene" id="services" data-scene="light" data-morph-from="dark" data-morph-end="top 65%" aria-labelledby="services-title">
+      <div class="showcase__head container">
+        <div>
+          <p class="kicker" data-reveal="fade" data-i18n="home.services.kicker"></p>
+          <h2 id="services-title" data-reveal="lines" data-i18n-html="home.services.title"></h2>
+        </div>
+        <div class="showcase__aside">
+          <p class="lead" data-reveal="up" data-i18n="home.services.lead"></p>
+          <a class="link-arrow" href="services.html" data-reveal="up"><span data-i18n="cta.allServices"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="showcase__viewport" data-lenis-prevent-touch>
+        <ul class="showcase__track" role="list" data-services-track></ul>
+      </div>
+      <div class="container showcase__foot" aria-hidden="true">
+        <span class="index-num" data-showcase-count>01 / 08</span>
+        <div class="showcase__progress"><span></span></div>
+      </div>
+    </section>
+
+    <!-- SCENE 5 — Before & after (dark) -->
+    <section class="results scene" id="results" data-scene="dark" aria-labelledby="results-title">
+      <div class="container">
+        <div class="results__head">
+          <div>
+            <p class="kicker" data-reveal="fade" data-i18n="home.results.kicker"></p>
+            <h2 id="results-title" data-reveal="lines" data-i18n-html="home.results.title"></h2>
+          </div>
+          <div>
+            <p class="lead" data-reveal="up" data-i18n="home.results.lead"></p>
+            <p class="results__demo" data-reveal="up"><span class="tag tag--demo" data-i18n="ui.demo"></span> <span data-i18n="home.results.demo"></span></p>
+          </div>
+        </div>
+        <div class="results__layout" data-results></div>
+      </div>
+    </section>
+
+    <!-- SCENE 6 — Doctors (light) -->
+    <section class="team scene" id="team" data-scene="light" data-morph-from="dark" data-morph-end="top 65%" aria-labelledby="team-title">
+      <div class="container">
+        <div class="team__head">
+          <div>
+            <p class="kicker" data-reveal="fade" data-i18n="home.doctors.kicker"></p>
+            <h2 id="team-title" data-reveal="lines" data-i18n-html="home.doctors.title"></h2>
+          </div>
+          <div>
+            <p class="lead" data-reveal="up" data-i18n="home.doctors.lead"></p>
+            <a class="link-arrow" href="doctors.html" data-reveal="up"><span data-i18n="cta.allDoctors"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <ul class="team__grid" role="list" data-doctors></ul>
+      </div>
+    </section>
+
+    <!-- SCENE 7 — Pricing (soft light) -->
+    <section class="pricing scene" id="pricing" data-scene="soft" aria-labelledby="pricing-title">
+      <div class="container pricing__layout">
+        <div class="pricing__intro">
+          <p class="kicker" data-reveal="fade" data-i18n="home.pricing.kicker"></p>
+          <h2 id="pricing-title" data-reveal="lines" data-i18n-html="home.pricing.title"></h2>
+          <p class="lead" data-reveal="up" data-i18n="home.pricing.lead"></p>
+          <p class="pricing__demo" data-reveal="up"><span class="tag tag--demo" data-i18n="ui.demo"></span> <span data-i18n="pricesPage.disclaimer"></span></p>
+          <div class="pricing__ctas" data-reveal="up">
+            <a class="btn btn--solid" href="booking.html"><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="link-arrow" href="prices.html"><span data-i18n="cta.allPrices"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="pricing__table" data-pricing></div>
+      </div>
+    </section>
+
+    <!-- SCENE 8 — Final cinematic CTA (dark) -->
+    <section class="finale scene" id="finale" data-scene="dark" data-morph-from="soft" data-morph-end="top 55%" aria-labelledby="finale-title">
+      <div class="finale__light" aria-hidden="true"></div>
+      <svg class="finale__arc" viewBox="0 0 1000 400" fill="none" aria-hidden="true">
+        <path d="M60 120 C 260 380, 740 380, 940 120" stroke="currentColor" stroke-width="1"/>
+        <path d="M160 150 C 330 330, 670 330, 840 150" stroke="currentColor" stroke-width="1" opacity=".45"/>
+      </svg>
+      <div class="container finale__inner">
+        <p class="kicker" data-reveal="fade" data-i18n="home.final.kicker"></p>
+        <h2 class="finale__title" id="finale-title" data-reveal="lines" data-i18n-html="home.final.title"></h2>
+        <p class="lead finale__lead" data-reveal="up" data-i18n="home.final.lead"></p>
+        <div class="finale__ctas" data-reveal="up">
+          <a class="btn btn--solid btn--lg" href="booking.html"><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--lg" href="contacts.html"><span class="btn__label" data-text=""><span data-i18n="cta.contact"></span></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p style="padding:1rem;text-align:center">Для полной работы сайта включите JavaScript. Телефон и адрес клиники — на странице <a href="contacts.html">контактов</a>.</p></noscript>
+</body>
+</html>

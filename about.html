@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>О клинике — Lumen Dental Studio</title>
+  <meta name="description" content="Наш подход, пространство клиники и принципы работы.">
+  <link rel="canonical" href="https://example.com/about.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lumen Dental Studio">
+  <meta property="og:title" content="О клинике — Lumen Dental Studio">
+  <meta property="og:description" content="Наш подход, пространство клиники и принципы работы.">
+  <meta property="og:url" content="https://example.com/about.html">
+  <meta property="og:image" content="https://example.com/assets/images/og-image.jpg">
+  <meta property="og:locale" content="ru_KZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="about">
+  <main id="main" tabindex="-1">
+    <section class="page-hero scene" data-scene="light">
+      <div class="container">
+        <nav class="breadcrumb" data-i18n-attr="aria-label:nav.breadcrumb"><ol><li><a href="index.html" data-i18n="nav.home"></a></li><li aria-current="page" data-i18n="nav.about"></li></ol></nav>
+        <h1 data-reveal="lines" data-i18n-html="about.title" style="max-width:14ch"></h1>
+      </div>
+    </section>
+    <section class="section scene" data-scene="light" style="padding-top:0">
+      <div class="container">
+        <figure class="media" style="aspect-ratio:21/9;border-radius:var(--radius-lg)" data-reveal="clip">
+          <img src="assets/images/photos/clinic-room.webp" srcset="assets/images/photos/clinic-room-sm.webp 900w, assets/images/photos/clinic-room.webp 2000w" sizes="100vw" width="2000" height="1337" decoding="async" alt="" data-i18n-attr="alt:about.spaceAlts.0" data-parallax="0.12">
+        </figure>
+        <p class="manifesto" style="margin-top:var(--sp-9)" data-reveal="words" data-i18n="about.manifesto"></p>
+      </div>
+    </section>
+    <section class="section scene" data-scene="dark">
+      <div class="container">
+        <p class="kicker" data-reveal="fade" data-i18n="about.principlesTitle"></p>
+        <ol class="principles" role="list" style="margin-top:var(--sp-7)" data-reveal="stagger" data-principles></ol>
+      </div>
+    </section>
+    <section class="section scene" data-scene="dark" style="padding-top:0">
+      <div class="container">
+        <div class="page-hero__grid" style="margin-bottom:var(--sp-8)">
+          <h2 data-reveal="lines" data-i18n="about.spaceTitle"></h2>
+          <p class="lead" data-reveal="up" data-i18n="about.spaceText"></p>
+        </div>
+        <div class="space-gallery">
+          <figure class="media" data-reveal="clip"><img src="assets/images/photos/clinic-lounge.webp" width="1800" height="1168" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:about.spaceAlts.1" data-parallax="0.1"></figure>
+          <figure class="media" data-reveal="clip"><img src="assets/images/photos/mirror-chair.webp" width="1200" height="1800" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:about.spaceAlts.0" data-parallax="0.1"></figure>
+          <figure class="media" data-reveal="clip"><img src="assets/images/photos/clinic-desk.webp" width="2000" height="1333" loading="lazy" decoding="async" alt="" data-i18n-attr="alt:about.spaceAlts.2" data-parallax="0.1"></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section scene" data-scene="soft">
+      <div class="container info-cards" data-reveal="stagger">
+        <div class="info-card"><span class="tag tag--demo" data-i18n="ui.placeholder"></span><h3 data-i18n="about.credentialsTitle"></h3><p data-i18n="about.credentialsText"></p></div>
+        <div class="info-card"><span class="tag tag--demo" data-i18n="ui.placeholder"></span><h3 data-i18n="about.techTitle"></h3><p data-i18n="about.techText"></p></div>
+      </div>
+    </section>
+    <section class="section section--tight scene" data-scene="light">
+      <div class="container">
+        <div class="cta-band" data-reveal="up">
+          <h2 data-i18n-html="home.final.title"></h2>
+          <div class="cta-band__actions">
+            <a class="btn btn--solid" href="booking.html" ><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn" href="contacts.html" ><span class="btn__label" data-text=""><span data-i18n="cta.contact"></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p style="padding:1rem;text-align:center">Для полной работы сайта включите JavaScript.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>До и после — Lumen Dental Studio</title>
+  <meta name="description" content="Галерея сравнения результатов с интерактивным слайдером «до и после».">
+  <link rel="canonical" href="https://example.com/before-after.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lumen Dental Studio">
+  <meta property="og:title" content="До и после — Lumen Dental Studio">
+  <meta property="og:description" content="Галерея сравнения результатов с интерактивным слайдером «до и после».">
+  <meta property="og:url" content="https://example.com/before-after.html">
+  <meta property="og:image" content="https://example.com/assets/images/og-image.jpg">
+  <meta property="og:locale" content="ru_KZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="results">
+  <main id="main" tabindex="-1">
+    <section class="page-hero scene" data-scene="dark">
+      <div class="container">
+        <nav class="breadcrumb" data-i18n-attr="aria-label:nav.breadcrumb"><ol><li><a href="index.html" data-i18n="nav.home"></a></li><li aria-current="page" data-i18n="nav.results"></li></ol></nav>
+        <div class="page-hero__grid">
+          <div>
+            <h1 data-reveal="lines" data-i18n-html="resultsPage.title"></h1>
+          </div>
+          <div class="stack">
+            <p class="lead" data-reveal="up" data-i18n="resultsPage.lead"></p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section scene" data-scene="dark" style="padding-top:0">
+      <div class="container stack" style="--stack:var(--sp-7)">
+        <p class="notice" data-reveal="up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span data-i18n="resultsPage.disclaimer"></span></p>
+        <div data-results-filters></div>
+        <ul class="gallery" role="list" aria-live="polite" data-gallery></ul>
+      </div>
+    </section>
+    <section class="section scene" data-scene="light" aria-labelledby="consent-title">
+      <div class="container">
+        <p class="kicker" data-reveal="fade" data-i18n="privacy.kicker"></p>
+        <h2 id="consent-title" style="margin:var(--sp-5) 0 var(--sp-8);max-width:18ch" data-reveal="lines" data-i18n="resultsPage.consentTitle"></h2>
+        <ol class="consent-steps" role="list" data-reveal="stagger" data-consent-steps></ol>
+        <p style="margin-top:var(--sp-7)"><a class="link-arrow" href="privacy.html"><span data-i18n="nav.privacy"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+    </section>
+    <section class="section section--tight scene" data-scene="light">
+      <div class="container">
+        <div class="cta-band" data-reveal="up">
+          <h2 data-i18n-html="home.final.title"></h2>
+          <div class="cta-band__actions">
+            <a class="btn btn--solid" href="booking.html" ><span class="btn__label" data-text=""><span data-i18n="cta.book"></span></span><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn" href="contacts.html" ><span class="btn__label" data-text=""><span data-i18n="cta.contact"></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p style="padding:1rem;text-align:center">Для полной работы сайта включите JavaScript.</p></noscript>
+</body>
+</html>

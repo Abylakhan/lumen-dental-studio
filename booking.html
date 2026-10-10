@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Запись на приём — Lumen Dental Studio</title>
+  <meta name="description" content="Оставьте заявку онлайн или через WhatsApp. Клиника свяжется с вами для подтверждения.">
+  <link rel="canonical" href="https://example.com/booking.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lumen Dental Studio">
+  <meta property="og:title" content="Запись на приём — Lumen Dental Studio">
+  <meta property="og:description" content="Оставьте заявку онлайн или через WhatsApp. Клиника свяжется с вами для подтверждения.">
+  <meta property="og:url" content="https://example.com/booking.html">
+  <meta property="og:image" content="https://example.com/assets/images/og-image.jpg">
+  <meta property="og:locale" content="ru_KZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="booking">
+  <main id="main" tabindex="-1">
+    <section class="scene" data-scene="light">
+      <div class="container booking">
+        <div class="booking__intro">
+          <nav class="breadcrumb" data-i18n-attr="aria-label:nav.breadcrumb"><ol><li><a href="index.html" data-i18n="nav.home"></a></li><li aria-current="page" data-i18n="nav.booking"></li></ol></nav>
+          <p class="kicker" data-i18n="booking.kicker"></p>
+          <h1 data-reveal="lines" data-i18n-html="booking.title"></h1>
+          <p class="lead" data-reveal="up" data-i18n="booking.lead"></p>
+          <div>
+            <h2 class="kicker" style="margin-bottom:var(--sp-4)" data-i18n="booking.nextTitle"></h2>
+            <ol class="next-steps" role="list" data-next-steps></ol>
+          </div>
+          <div class="stack" style="--stack:var(--sp-3)">
+            <p class="muted" data-i18n="booking.preferCall"></p>
+            <div class="cta-band__actions" data-booking-contacts></div>
+          </div>
+        </div>
+
+        <div class="booking-card" data-reveal="up">
+          <form class="booking-form" novalidate data-booking-form>
+            <div class="form-summary" role="alert" tabindex="-1" data-form-summary></div>
+
+            <fieldset class="form-section">
+              <legend><span class="index-num">01</span> <span data-i18n="booking.sections.treatment"></span></legend>
+              <div class="form-grid">
+                <div class="field span-2" data-field="doctor">
+                  <label class="field__label" for="f-doctor" data-i18n="booking.fields.doctor"></label>
+                  <select class="select" id="f-doctor" name="doctor"></select>
+                </div>
+                <div class="field span-2" data-field="service">
+                  <label class="field__label" for="f-service"><span data-i18n="booking.fields.service"></span><span class="req" aria-hidden="true">*</span></label>
+                  <select class="select" id="f-service" name="service" required aria-describedby="e-service"></select>
+                  <p class="field__error" id="e-service"></p>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span class="index-num">02</span> <span data-i18n="booking.sections.time"></span></legend>
+              <div class="form-grid">
+                <div class="field" data-field="date">
+                  <label class="field__label" for="f-date"><span data-i18n="booking.fields.date"></span><span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="date" id="f-date" name="date" required aria-describedby="h-date e-date">
+                  <p class="field__hint" id="h-date" data-i18n="booking.fields.dateHint"></p>
+                  <p class="field__error" id="e-date"></p>
+                </div>
+                <fieldset class="field span-2" data-field="time">
+                  <legend class="field__label" data-i18n="booking.fields.time"></legend>
+                  <div class="segmented" data-time-options></div>
+                </fieldset>
+                <fieldset class="field span-2" data-field="slot" hidden>
+                  <legend class="field__label"><span data-i18n="booking.fields.slot"></span><span class="req" aria-hidden="true">*</span></legend>
+                  <div class="segmented slots" data-slot-options aria-describedby="h-slot e-slot"></div>
+                  <p class="field__hint" id="h-slot" aria-live="polite" data-slot-status></p>
+                  <p class="field__error" id="e-slot"></p>
+                </fieldset>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span class="index-num">03</span> <span data-i18n="booking.sections.you"></span></legend>
+              <div class="form-grid">
+                <div class="field" data-field="name">
+                  <label class="field__label" for="f-name"><span data-i18n="booking.fields.name"></span><span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="text" id="f-name" name="name" required autocomplete="name" maxlength="60" data-i18n-attr="placeholder:booking.fields.namePlaceholder" aria-describedby="e-name">
+                  <p class="field__error" id="e-name"></p>
+                </div>
+                <div class="field" data-field="phone">
+                  <label class="field__label" for="f-phone"><span data-i18n="booking.fields.phone"></span><span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="tel" id="f-phone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+7 (7__) ___-__-__" aria-describedby="h-phone e-phone">
+                  <p class="field__hint" id="h-phone" data-i18n="booking.fields.phoneHint"></p>
+                  <p class="field__error" id="e-phone"></p>
+                </div>
+                <fieldset class="field span-2" data-field="method">
+                  <legend class="field__label" data-i18n="booking.fields.method"></legend>
+                  <div class="segmented" data-method-options></div>
+                </fieldset>
+                <div class="field span-2" data-field="comment">
+                  <label class="field__label" for="f-comment"><span data-i18n="booking.fields.comment"></span> <span class="muted" data-i18n="booking.fields.commentOptional"></span></label>
+                  <textarea class="textarea" id="f-comment" name="comment" maxlength="500" rows="4" data-i18n-attr="placeholder:booking.fields.commentPlaceholder" aria-describedby="c-comment"></textarea>
+                  <p class="counter" id="c-comment" aria-live="polite" data-comment-count>0/500</p>
+                </div>
+                <div class="field span-2" data-field="consent">
+                  <label class="checkbox"><input type="checkbox" name="consent" id="f-consent" required aria-describedby="e-consent"><span data-i18n-html="booking.fields.consent"></span></label>
+                  <p class="field__error" id="e-consent"></p>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <div class="form-actions__row">
+                <button type="submit" class="btn btn--solid btn--lg" data-submit>
+                  <span class="spinner" aria-hidden="true"></span>
+                  <span class="btn__label" data-text=""><span data-i18n="booking.submit"></span></span>
+                  <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+                <span class="or" data-i18n="booking.orWhatsapp"></span>
+                <a class="btn btn--lg" href="#" target="_blank" rel="noopener" data-wa-booking>
+                  <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+                  <span class="btn__label" data-text=""><span data-i18n="booking.whatsappSend"></span></span>
+                </a>
+              </div>
+              <p class="field__hint" data-i18n="booking.whatsappHint"></p>
+            </div>
+          </form>
+          <div class="form-result" data-form-result hidden tabindex="-1" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p style="padding:1rem;text-align:center">Для полной работы сайта включите JavaScript.</p></noscript>
+</body>
+</html>
