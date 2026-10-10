@@ -178,8 +178,11 @@
 }
 
 /* Hint wording per input type */
-.hint-touch { display: none; }
-@media (hover: none) { .hint-pointer { display: none; } .hint-touch { display: inline-block; } }
+.closeup__side .hint-touch { display: none; }
+@media (hover: none) {
+  .closeup__side .hint-pointer { display: none; }
+  .closeup__side .hint-touch { display: inline-block; }
+}
 
 /* ---- Performance on phones -------------------------------------------- */
 @media (max-width: 767.98px) {
@@ -254,4 +257,44 @@ html.is-typing .action-bar, html.menu-open .action-bar { animation: none; }
 /* The close-up photo starts slightly enlarged for its zoom-in; keep it from widening the page */
 @media (max-width: 899.98px) {
   .closeup { overflow-x: clip; }
+}
+
+/* ==========================================================================
+   Mobile: only the essentials
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  :root { --section-y: 4.5rem; }
+
+  /* Hero: headline, photo, one sentence, one action */
+  .hero__note, .hero__ctas .btn:not(.btn--solid) { display: none; }
+  .hero__lead { font-size: var(--fs-base); }
+
+  /* Approach: three points, no decoration or filler figures */
+  .approach__curve, .stats { display: none; }
+  .approach__title { font-size: clamp(2rem, 1rem + 6vw, 2.6rem); margin-bottom: var(--sp-6); }
+  .approach__img { aspect-ratio: 16 / 9; }
+
+  /* Close-up: just the interactive photo */
+  .closeup__side--left, .closeup__side--right > span, .closeup__side--right > br { display: none; }
+  .closeup__side--right { padding-top: 0; }
+  .closeup__pin { gap: var(--sp-4); }
+
+  /* Section intros: heading only (keep the honesty notes) */
+  .showcase__aside .lead, .team__head .lead, .pricing__intro .lead, .finale__lead, .results__head .lead { display: none; }
+  .showcase__head, .team__head, .results__head { margin-bottom: var(--sp-5); }
+  .results__desc p.muted { font-size: var(--fs-sm); }
+  .doc-card .link-arrow, .doc-card__name { display: none; }
+
+  /* Finale: headline + two actions */
+  .finale { min-height: auto; padding-block: 5rem; }
+  .finale__title { font-size: clamp(2.2rem, 1rem + 7vw, 3rem); }
+
+  /* Footer: contacts and hours only */
+  .footer__word { display: none; }
+  .footer__top { grid-template-columns: 1fr 1fr; gap: var(--sp-6) var(--sp-4); padding-bottom: var(--sp-6); }
+  .footer__top > .footer__col:nth-child(1) { grid-column: 1 / -1; }
+  .footer__top > .footer__col:nth-child(2), .footer__top > .footer__col:nth-child(3) { display: none; }
+  .footer__bottom > span:last-child { display: none; }
+  .site-footer { padding-top: var(--sp-8); }
+  .demo-note { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-xs); }
 }

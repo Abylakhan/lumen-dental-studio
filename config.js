@@ -112,8 +112,8 @@ const SITE = {
   languages: {
     default: 'ru',
     supported: [
-      { code: 'ru', label: 'RU', name: 'Русский', htmlLang: 'ru' },
-      { code: 'kk', label: 'KZ', name: 'Қазақша', htmlLang: 'kk' },
+      { code: 'kk', label: 'ҚАЗ', name: 'Қазақша', htmlLang: 'kk' },
+      { code: 'ru', label: 'РУС', name: 'Русский', htmlLang: 'ru' },
     ],
   },
 

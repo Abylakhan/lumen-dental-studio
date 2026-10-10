@@ -4,7 +4,7 @@
  * so clinic details never need editing in HTML.
  */
 import SITE from '../config.js';
-import { t, tl, getLang, setLang } from './localization.js';
+import { t, tl, getLang, setLang, syncSwitches } from './localization.js';
 import { $, $$, esc, icons, logoMark, telHref, waHref, mailHref, reducedMotion, hasGsap } from './utils.js';
 import { hoursListHTML, openStatus } from './hours.js';
 
@@ -288,7 +288,7 @@ function initLanguageButtons() {
     setLang(b.dataset.lang);
   });
   const sync = () => {
-    $$('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === getLang())));
+    syncSwitches(getLang());
     $$('[data-address]').forEach((el) => { el.textContent = tl(SITE.contact.address); });
     $$('[data-hours-list]').forEach((el) => { el.innerHTML = hoursListHTML(); });
     $$('[data-wa-general]').forEach((el) => { el.href = waHref(t('booking.wa.general')); });

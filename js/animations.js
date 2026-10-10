@@ -149,6 +149,25 @@ export function initReveals(root = document) {
     });
   });
 
+  // List items rise in waves as they scroll into view (prices, services,
+  // FAQ, gallery, steps, hours…). Transform/opacity only — smooth on phones.
+  const LIST_ITEMS = [
+    '.price-row', '.svc-row', '.accordion details', '.gallery__item', '.doc-row', '.review',
+    '.prep-grid > li', '.principles > li', '.consent-steps > li', '.info-list > div', '.next-steps > li',
+    '.hours-table tr', '.steps > li', '.results__cases > li', '.legal section', '.contact-big > div',
+    '.related > li', '.pill-list > li', '.price-group h2', '.facts > div',
+  ].join(', ');
+  const items = $$(LIST_ITEMS, root).filter((el) => !el.dataset.waveInit && !el.closest('[data-reveal="stagger"], .site-menu'));
+  if (items.length) {
+    items.forEach((el) => { el.dataset.waveInit = '1'; });
+    gsap.set(items, { autoAlpha: 0, y: 26 });
+    ScrollTrigger.batch(items, {
+      start: 'top 94%',
+      once: true,
+      onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, overwrite: true }),
+    });
+  }
+
   $$('[data-count]', root).forEach((el) => {
     if (el.dataset.countInit) return;
     el.dataset.countInit = '1';

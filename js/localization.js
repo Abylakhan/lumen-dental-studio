@@ -12,9 +12,8 @@ import SITE from '../config.js';
 import { storage } from './utils.js';
 import ru from './i18n/ru.js';
 import kk from './i18n/kk.js';
-import en from './i18n/en.js';
 
-const DICTS = { ru, kk, en };
+const DICTS = { ru, kk };
 const STORAGE_KEY = 'lumen.lang';
 const supported = SITE.languages.supported.map((l) => l.code);
 const listeners = new Set();
@@ -39,7 +38,6 @@ function lookup(dict, key) {
 export function t(key, vars) {
   let value = lookup(DICTS[current], key);
   if (value === undefined) value = lookup(DICTS.ru, key);
-  if (value === undefined) value = lookup(DICTS.en, key);
   if (value === undefined) {
     console.warn(`[i18n] missing key: ${key}`);
     return key;
@@ -93,18 +91,51 @@ export function applyMeta(vars) {
   set('meta[name="description"]', 'content', description);
   set('meta[property="og:title"]', 'content', title);
   set('meta[property="og:description"]', 'content', description);
-  const locales = { ru: 'ru_KZ', kk: 'kk_KZ', en: 'en_US' };
+  const locales = { ru: 'ru_KZ', kk: 'kk_KZ' };
   set('meta[property="og:locale"]', 'content', locales[current]);
 }
 
-export function setLang(code) {
-  if (!supported.includes(code) || code === current) return;
+let switching = false;
+
+/** Move every language switch's sliding thumb to the chosen language. */
+function syncSwitches(code) {
+  document.querySelectorAll('.lang-switch').forEach((sw) => {
+    const buttons = [...sw.querySelectorAll('[data-lang]')];
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === code)));
+    sw.style.setProperty('--i', String(Math.max(0, buttons.findIndex((b) => b.dataset.lang === code))));
+  });
+}
+
+function commitLang(code) {
   current = code;
   storage.set(STORAGE_KEY, code);
   syncDocument();
   listeners.forEach((fn) => fn(code));
   document.dispatchEvent(new CustomEvent('i18n:change', { detail: { lang: code } }));
 }
+
+/**
+ * Switch language with a soft cross-fade: the switch thumb slides at once,
+ * the page text fades out, is replaced, and fades back in.
+ */
+export function setLang(code) {
+  if (!supported.includes(code) || code === current || switching) return;
+  syncSwitches(code);
+  const root = document.documentElement;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { commitLang(code); return; }
+  switching = true;
+  root.classList.add('lang-out');
+  setTimeout(() => {
+    commitLang(code);
+    requestAnimationFrame(() => {
+      root.classList.remove('lang-out');
+      root.classList.add('lang-in');
+      setTimeout(() => { root.classList.remove('lang-in'); switching = false; }, 500);
+    });
+  }, 240);
+}
+
+export { syncSwitches };
 
 export function onLangChange(fn) {
   listeners.add(fn);
@@ -126,4 +157,5 @@ export function setPageMetaVars(vars) {
 
 export function initLocalization() {
   syncDocument();
+  requestAnimationFrame(() => syncSwitches(current));
 }
